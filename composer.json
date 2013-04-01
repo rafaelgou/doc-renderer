@@ -1,0 +1,30 @@
+{
+    "name": "rgou/doc-renderer",
+    "description": "A Markdown/RestructuredText Renderer",
+    "type": "symfony-bundle",
+    "keywords": ["symfony", "bundle", "twitter", "boostrap", "theme"],
+    "homepage": "http://github.com/rafaelgou/doc-renderer",
+    "license": "MIT",
+
+    "authors": [
+        {
+            "name": "Rafael Goulart",
+            "email": "rafaelgou@gmail.com",
+            "homepage": "http://tech.rgou.net",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/yaml": "2.2.*@dev",
+        "twig/twig": "1.*",
+        "twig/extensions": "1.0.*",
+        "dflydev/markdown": "~1.0",
+        "aptoma/twig-markdown": "dev-master"
+    },
+    "autoload": {
+        "psr-0": { "Rgou\\DocRenderer": "" }
+    },
+    "minimum-stability": "dev",
+    "target-dir": "Rgou/DocRenderer"
+}

@@ -1,0 +1,8 @@
+# display Markdown as HTML by default
+RewriteEngine on
+#RewriteRule .+\.(markdown|mdown|md|mkd)$ autorender_md.php
+#RewriteRule .+\.(markdown|mdown|md|mkd)\-text$ autorender_md.php [L]
+#RewriteRule .+\.(rst)$ autorender_rst.php
+#RewriteRule .+\.(rst)\-text$ autorender_rst.php [L]
+RewriteRule .+\.(markdown|mdown|md|mkd|rst)$ autorender.php
+RewriteRule .+\.(markdown|mdown|md|mkd|rst)\-text$ autorender.php [L]

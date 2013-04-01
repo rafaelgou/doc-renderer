@@ -1,0 +1,11 @@
+title:         DocRenderer Restructured Text
+menu_title:    DocRenderer Restructured Text
+base_path:     /var/www/docdevel
+base_url:      http://localhost/docdevel
+text_suffix:   text
+permalink:     <i class="icon-link"></i>
+use_toc:        true
+link_to_source: true
+template:       autorenderer.html.twig
+# Omits loads the default
+#template_path:  false

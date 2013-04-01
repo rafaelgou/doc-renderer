@@ -1,0 +1,4 @@
+# display Markdown and restructuredText as HTML by default
+RewriteEngine on
+RewriteRule .+\.(markdown|mdown|md|mkd|rst)$ autorender.php
+RewriteRule .+\.(markdown|mdown|md|mkd|rst)\-text$ autorender.php [L]
