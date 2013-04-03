@@ -192,14 +192,14 @@ browseable directory of docs.
 How to use:
 
 - Copy any of these directories to a Apache+PHP directory, renaming if you want to;
-- Point both PHP files to the right doc-renderer directory:
 
-   
-    $docRendererPath = __DIR__ . '/../doc-renderer'; // Change here!
-    
+- Point both PHP files to the right doc-renderer directory:
+  `$docRendererPath = __DIR__ . '/../doc-renderer'; // Change here!`
 
 - Be sure the Apache directive `AllowOverride All` is set for this directory!
+
 - Put some Markdown or Restructured Text on this folder (even subdirectories)
+
 - Open in the browser
 
 The `index.php` searchs for all related files (see `.htaccess` file for more info)
