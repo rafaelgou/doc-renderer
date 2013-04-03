@@ -194,7 +194,9 @@ How to use:
 - Copy any of these directories to a Apache+PHP directory, renaming if you want to;
 - Point both PHP files to the right doc-renderer directory:
 
+   
     $docRendererPath = __DIR__ . '/../doc-renderer'; // Change here!
+    
 
 - Be sure the Apache directive `AllowOverride All` is set for this directory!
 - Put some Markdown or Restructured Text on this folder (even subdirectories)
