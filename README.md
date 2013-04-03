@@ -8,6 +8,13 @@ and [RestructuredText](http://docutils.sourceforge.net/rst.html) in PHP.
 It uses [Twitter Bootstrap](http://twitter.github.com/bootstrap/) as CSS Framework, 
 [Twig](http://twig.sensiolabs.org/) as template engine.
 
+Screenshots
+-----------
+
+![renderer](https://raw.github.com/rafaelgou/doc-renderer/master/images/screenshot-renderer.png "The Renderer")
+
+![index](https://raw.github.com/rafaelgou/doc-renderer/master/images/screenshot-index.png "The Index")
+
 Install
 -------
 
