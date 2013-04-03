@@ -1,9 +1,22 @@
 <?php
 namespace Rgou\DocRenderer;
 
+/**
+ * RestructuredText Renderer
+ * 
+ * @package  DocRenderer
+ * @author   Rafael Goulart <rafaelgou@gmail.com>
+ */
 class RestructuredText extends AbstractRenderer
 {
-
+    /**
+     * Render the HTML
+     * 
+     * @param string  $input              Source input to render
+     * @param integer $initialHeaderLevel Level to render
+     * 
+     * @return string 
+     */
     public function render($input, $initialHeaderLevel = 1)
     {
         $this->parse($input, $initialHeaderLevel);
@@ -11,6 +24,15 @@ class RestructuredText extends AbstractRenderer
         return $this->renderTwig();
     }
 
+    /**
+     * Render the HTML
+     * 
+     * @param string  $input              Source input to render
+     * @param integer $initialHeaderLevel Level to render
+     * @param string  $rst2htmlPath       Restructured Text executable
+     * 
+     * @return string 
+     */
     protected function parse($input, $initialHeaderLevel = 1, $rst2htmlPath = '/usr/local/bin/rst2html.py') 
     {
 

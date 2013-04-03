@@ -1,9 +1,23 @@
 <?php
 namespace Rgou\DocRenderer;
 
+/**
+ * Markdown Renderer
+ * 
+ * @package  DocRenderer
+ * @author   Rafael Goulart <rafaelgou@gmail.com>
+ */
 class Markdown extends AbstractRenderer
 {
 
+    /**
+     * Render the HTML
+     * 
+     * @param string  $input              Source input to render
+     * @param integer $initialHeaderLevel Level to render
+     * 
+     * @return string 
+     */
     public function render($input, $initialHeaderLevel = 1)
     {
         $this->parse($input, $initialHeaderLevel);
@@ -11,7 +25,15 @@ class Markdown extends AbstractRenderer
         return $this->renderTwig();
     }
 
-    protected function parse($input, $initialHeaderLevel = 1, $rst2htmlPath = '/usr/bin/rst2html') 
+    /**
+     * Render the HTML
+     * 
+     * @param string  $input              Source input to render
+     * @param integer $initialHeaderLevel Level to render
+     * 
+     * @return string 
+     */
+    protected function parse($input, $initialHeaderLevel = 1) 
     {
 
         // Markdown file to read

@@ -1,11 +1,33 @@
 <?php
 namespace Rgou\DocRenderer;
 
+/**
+ * AbstractRenderer
+ * 
+ * Base class for renderers
+ *
+ * @package  DocRenderer
+ * @author   Rafael Goulart <rafaelgou@gmail.com>
+ */
 abstract class AbstractRenderer
 {
 
+    /**
+     * @static
+     * @var array
+     */
     static public $extensions    = array('markdown', 'mdown', 'md', 'mkd', 'rst');
+
+    /**
+     * @static
+     * @var array
+     */
     static public $mdExtensions  = array('markdown', 'mdown', 'md', 'mkd');
+
+    /**
+     * @static
+     * @var array
+     */
     static public $rstExtensions = array('rst');
 
     protected $template;
@@ -14,14 +36,34 @@ abstract class AbstractRenderer
 
     protected $config = array();
 
+    /**
+     * Render the HTML
+     * 
+     * @param string  $input              Source input to render
+     * @param integer $initialHeaderLevel Level to render
+     * 
+     * @return string 
+     */
     abstract public function render($input, $initialHeaderLevel = 1);
 
+    /**
+     * Constructor
+     * 
+     * @param array $config The configuration
+     * 
+     * @return void
+     */
     public function __construct(array $config)
     {
         $this->setConfig($config);
     }
 
-    public function setConfig($config)
+    /**
+     * Set the config
+     * 
+     * @param array $config The Config
+     */
+    public function setConfig(array $config)
     {
         $defaults = array(
             'title'          => 'DocRenderer',
@@ -44,6 +86,13 @@ abstract class AbstractRenderer
         $this->config['requestUriText'] = str_replace('%text_suffix%', $this->config['text_suffix'], $this->config['requestUriText']);
     }
 
+    /**
+     * Set the template path
+     * 
+     * @param string $templatePath The Template Path
+     * 
+     * @return \Rgou\DocRenderer\AbstractRenderer 
+     */
     public function setTemplatePath($templatePath)
     {
         $this->config['template_path'] = (string) $templatePath;
@@ -51,28 +100,37 @@ abstract class AbstractRenderer
         return $this;
     }
     
+    /**
+     * Set the template
+     * 
+     * @param string $template The Template
+     * 
+     * @return \Rgou\DocRenderer\AbstractRenderer 
+     */
     public function setTemplate($template)
     {
         $this->config['template'] = (string) $template;
 
         return $this;
     }
-    
+
+    /**
+     * Get the config
+     * 
+     * @return array
+     */
     public function getConfig()
     {
         return $this->config;
     }
     
     /**
-     * Get Title from HTML
+     * Get HTML with from TOC
      *
-     * Parses HTML and find first title (h1  to h6)
-     * 
-     * @param $html string
+     * @param $html string The HTML
      *
      * @return string
      */
-
     public function getTableOfContents($html)
     {
         preg_match_all("/(<h([1-6]{1})[^<>]*>)(.+)(<\/h[1-6]{1}>)/", $html, $matches, PREG_SET_ORDER);
@@ -141,11 +199,11 @@ abstract class AbstractRenderer
      *
      * Parses HTML and find first title (h1  to h6)
      * 
-     * @param $html string
+     * @param $html string The HTML
      *
      * @return string
      */
-    public function getTitle( $html )
+    public function getTitle($html)
     {
         if ( preg_match( "/<h[1-6]{1}[^<>]*>(.+)<\/h[1-6]{1}>/", $html, $matches ) ) {
 
@@ -164,13 +222,14 @@ abstract class AbstractRenderer
      * Change a string into something that can be safely used as a parameter
      * in a URL. Example: "Rob is a PHP Genius" would become "rob_is_a_php_genius" 
      * 
-     * @param $unsafe string
+     * @static
+     * 
+     * @param $unsafe string Unsafe text
      *
      * @return string
      */
     static public function getSafeParameter($unsafe) 
     {
-
         // remove HTML tags
         $unsafe = strip_tags($unsafe);
 
@@ -186,6 +245,15 @@ abstract class AbstractRenderer
         return $safe;
     }
 
+    /**
+     * Get an array with directory content
+     * 
+     * @static
+     * 
+     * @param string $dir The directory to scan
+     * 
+     * @return array
+     */
     static public function dirToArray($dir)
     {
         $result = array();
@@ -202,6 +270,15 @@ abstract class AbstractRenderer
         return $result;
     }
 
+    /**
+     * Render a file html string
+     *
+     * @param string  $file  The filename
+     * @param integer $level Level to render
+     * @param string  $type  Type: both, markdown or rst
+     * 
+     * @return mixed
+     */
     static public function renderFile($file, $level, $type = 'both')
     {
         switch($type) {
@@ -232,6 +309,16 @@ abstract class AbstractRenderer
         }
     }
 
+    /**
+     * Render a directory html string
+     *
+     * @param string  $dir     The directory
+     * @param integer $level   Level to render
+     * @param string  $type    Type: both, markdown or rst
+     * @param string  $baseDir Base directory
+     * 
+     * @return string
+     */
     static public function renderDir($dir, $level, $type = 'both', $baseDir = '')
     {
         $html = array();
@@ -266,6 +353,15 @@ abstract class AbstractRenderer
         }
     }
 
+    /**
+     * Render HTML from Twig template
+     * 
+     * @param mixed $config       The config array or false for default
+     * @param mixed $template     The template string or false for default
+     * @param mixed $templatePath The base template path or false for default
+     * 
+     * @return string
+     */
     public function renderTwig($config = false, $template = false, $templatePath = false)
     {
         $template     = $template ? $template : $this->config['template'];
