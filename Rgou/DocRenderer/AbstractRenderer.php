@@ -8,6 +8,9 @@ namespace Rgou\DocRenderer;
  *
  * @package  DocRenderer
  * @author   Rafael Goulart <rafaelgou@gmail.com>
+ * @author   Rob McBroom skurfer <github@skurfer.com>
+ * @see      https://github.com/skurfer/RenderMarkdown/blob/master/render.php
+ *
  */
 abstract class AbstractRenderer
 {
@@ -127,6 +130,9 @@ abstract class AbstractRenderer
     /**
      * Get HTML with from TOC
      *
+     * @author Rob McBroom skurfer <github@skurfer.com>
+     * @see    https://github.com/skurfer/RenderMarkdown/blob/master/render.php
+     *
      * @param $html string The HTML
      *
      * @return string
@@ -199,6 +205,9 @@ abstract class AbstractRenderer
      *
      * Parses HTML and find first title (h1  to h6)
      * 
+     * @author Rob McBroom skurfer <github@skurfer.com>
+     * @see    https://github.com/skurfer/RenderMarkdown/blob/master/render.php
+     *
      * @param $html string The HTML
      *
      * @return string
@@ -222,10 +231,13 @@ abstract class AbstractRenderer
      * Change a string into something that can be safely used as a parameter
      * in a URL. Example: "Rob is a PHP Genius" would become "rob_is_a_php_genius" 
      * 
+     * @author Rob McBroom skurfer <github@skurfer.com>
+     * @see    https://github.com/skurfer/RenderMarkdown/blob/master/render.php
+     *
      * @static
      * 
      * @param $unsafe string Unsafe text
-     *
+     * 
      * @return string
      */
     static public function getSafeParameter($unsafe) 

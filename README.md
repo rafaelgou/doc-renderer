@@ -8,6 +8,11 @@ and [RestructuredText](http://docutils.sourceforge.net/rst.html) in PHP.
 It uses [Twitter Bootstrap](http://twitter.github.com/bootstrap/) as CSS Framework, 
 [Twig](http://twig.sensiolabs.org/) as template engine.
 
+
+DocRenderer is inspired by [RenderMarkdown](https://github.com/skurfer/RenderMarkdown),
+from which some functions were borrewed, thanks to [Rob McBroom](https://github.com/skurfer).
+
+
 Screenshots
 -----------
 

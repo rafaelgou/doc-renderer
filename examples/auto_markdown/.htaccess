@@ -1,4 +1,6 @@
 # display Markdown as HTML by default
+# @author Rob McBroom skurfer <github@skurfer.com>
+# @see    https://github.com/skurfer/RenderMarkdown
 RewriteEngine on
 RewriteRule .+\.(markdown|mdown|md|mkd)$ autorender_markdown.php
 RewriteRule .+\.(markdown|mdown|md|mkd)\-text$ autorender_markdown.php [L]
