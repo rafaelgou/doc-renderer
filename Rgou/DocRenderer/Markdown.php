@@ -1,6 +1,10 @@
 <?php
 namespace Rgou\DocRenderer;
 
+use Michelf\Markdown as MarkdownParser;
+use Michelf\MarkdownExtra as MarkdownExtraParser;
+
+
 /**
  * Markdown Renderer
  * 
@@ -41,8 +45,8 @@ class Markdown extends AbstractRenderer
         $this->config['mdSource'] = file_get_contents($mdFileName);
 
         // Rendering Markdown
-        $parser = new \dflydev\markdown\MarkdownExtraParser();
-        $html   = $parser->transformMarkdown($this->config['mdSource']);
+        $parser = new MarkdownExtraParser();
+        $html   = $parser->transform($this->config['mdSource']);
 
         // Getting TOC and doctitle
         if (array_key_exists('use_toc', $this->config) && $this->config['use_toc']) {
