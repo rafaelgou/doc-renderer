@@ -226,6 +226,22 @@ abstract class AbstractRenderer
     }
 
     /**
+     * Parses to change code to Google Prettify
+     *
+     * Parses HTML and find first title (h1  to h6)
+     * 
+     * @see    http://stackoverflow.com/questions/13540864/google-code-prettify-with-markdown-not-working
+     *
+     * @param $html string The HTML
+     *
+     * @return string
+     */
+    public function parseGooglePrettify($html)
+    {
+        return str_replace('<pre><code class="', '<pre class="prettyprint"><code class="language-', $html);
+    }
+
+    /**
      * Get Safe Parameter (slug)
      *
      * Change a string into something that can be safely used as a parameter
@@ -387,5 +403,5 @@ abstract class AbstractRenderer
 
         return $template->render($config);
     }
-
+    
 }

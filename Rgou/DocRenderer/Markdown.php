@@ -47,12 +47,15 @@ class Markdown extends AbstractRenderer
         // Rendering Markdown
         $parser = new MarkdownExtraParser();
         $html   = $parser->transform($this->config['mdSource']);
+        
+        // Parsing Google Prettify
+        $html = $this->parseGooglePrettify($html);
 
         // Getting TOC and doctitle
         if (array_key_exists('use_toc', $this->config) && $this->config['use_toc']) {
             $this->config['htmlData'] = $this->getTableOfContents($html);
         } else {
-            $this->config['htmlData'] = $parser->transformMarkdown($this->config['mdSource']);
+            $this->config['htmlData'] = $parser->transform($this->config['mdSource']);
         }
         $this->config['doctitle'] = $this->getTitle($html);
 

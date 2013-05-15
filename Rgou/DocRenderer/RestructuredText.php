@@ -41,7 +41,13 @@ class RestructuredText extends AbstractRenderer
             "--no-file-insertion --no-raw ";
         $html = shell_exec($rst2html . $input); 
         $html = preg_replace('/.*<body>\n(.*)<\/body>.*/s', '${1}', $html);
-        $this->config['htmlData'] = $this->getTableOfContents($html);
+        
+        // Parsing Google Prettify
+        $html = $this->parseGooglePrettify($html);
+
+        if (array_key_exists('use_toc', $this->config) && $this->config['use_toc']) {
+            $this->config['htmlData'] = $this->getTableOfContents($html);
+        }                
         $this->config['doctitle'] = $this->getTitle($html);
 
         return $this->config['htmlData'];

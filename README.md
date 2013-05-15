@@ -8,10 +8,10 @@ and [RestructuredText](http://docutils.sourceforge.net/rst.html) in PHP.
 It uses [Twitter Bootstrap](http://twitter.github.com/bootstrap/) as CSS Framework, 
 [Twig](http://twig.sensiolabs.org/) as template engine.
 
+[Google Prettify](http://google-code-prettify.googlecode.com/svn/trunk/README.html) is used for syntax highlight.
 
 DocRenderer is inspired by [RenderMarkdown](https://github.com/skurfer/RenderMarkdown),
 from which some functions were borrewed, thanks to [Rob McBroom](https://github.com/skurfer).
-
 
 Screenshots
 -----------
@@ -52,16 +52,18 @@ Introduction
 The magic is:
 
 - Some Markdown or Restructured Text
-- For Markdown, [https://github.com/dflydev/dflydev-markdown]
+- For Markdown, [PHP-Markdown](https://github.com/michelf/php-markdown)
 - For Restructured Text, [Docutils](http://docutils.sourceforge.net/rst.html)
 - For rendering the HTML stuff, [Twig](http://twig.sensiolabs.org/)
 - For a pretty good face, [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
   (Bootstrap and JQuery are loaded from CDN sources)
+- For syntax highlighting, [Google Prettify](http://google-code-prettify.googlecode.com/svn/trunk/README.html)
 - For an easy configuration, [sfYaml](http://symfony.com/doc/current/components/yaml/introduction.html)
 
 [Composer](getcomposer.org/) lets everything easier to glue togheter, and a basic
 example is just include the Composer autoloader, loads a configuration and
 uses the libraries togheter:
+
 
     <?php
     // File examples/basic.php
@@ -217,6 +219,46 @@ How to use:
 The `index.php` searchs for all related files (see `.htaccess` file for more info)
 and `autorender*.php` do the magic.
 
+Markdown
+--------
 
+DocRenderer uses [PHP-Markdown-Extra](http://michelf.ca/projects/php-markdown/extra/) by default.
+
+This makes easier to use syntax highlighting as you can pass the language you want:
+
+    ~~~ .php
+    <?php 
+        echo 'foo';
+        $var = array('test' => 123);
+        print_r($var);
+    ?>
+    ~~~
+
+Customizing the template
+------------------------
+
+*Twitter Bootstrap*
+
+Change in the `<head>`
+
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
+to whatever other theme you want. See [Bootstrap CDN](http://www.bootstrapcdn.com/) for more free options. 
+
+*Google Prettify*:
+
+You can add languages not supported by default adding lines just like bellow on bottom of the page
+(just before `</body>`):
+
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/lang-yaml.js"></script>
+
+Additional languages are list [here](https://google-code-prettify.googlecode.com/svn/loader/).
+
+You can also change the skin on `<head>`
+
+    <link href="//google-code-prettify.googlecode.com/svn/loader/skins/desert.css" rel="stylesheet">
+
+See available skins [here](https://google-code-prettify.googlecode.com/svn/loader/skins/).
 
 
