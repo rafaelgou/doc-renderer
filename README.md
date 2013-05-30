@@ -28,7 +28,7 @@ Composer:
     {
         "require": {
             // ...
-            "rafaelgou/doc-renderer": "*"
+            "rgou/doc-renderer": "*"
         }
     }
 
