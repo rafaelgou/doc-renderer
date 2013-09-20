@@ -197,7 +197,7 @@ abstract class AbstractRenderer
         }
         $toc .= "</ul>\n";
 
-        return '<div id="toc" class="well span3 pull-right">' . $toc . '</div>' . "\n" . preg_replace($Sections, $SectionWIDs, $html, 1);
+        return '<div id="toc" class="alert alert-info col-lg-4 col-md-5 col-sm-12 col-xs-12 pull-right" style="margin-left: 10px;">' . $toc . '</div>' . "\n" . preg_replace($Sections, $SectionWIDs, $html, 1);
     }
 
     /**
