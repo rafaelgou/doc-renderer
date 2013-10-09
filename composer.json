@@ -26,5 +26,5 @@
         "psr-0": { "Rgou\\DocRenderer": "" }
     },
     "minimum-stability": "dev",
-    "target-dir": "Rgou/DocRenderer"
+    "target-dir": ""
 }
